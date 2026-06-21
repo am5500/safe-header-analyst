@@ -50,7 +50,7 @@ def get_api_key() -> str | None:
     explicitly to call_groq(api_key=...) — but the default and the
     documented path is the environment variable.
     """
-    return os.getenv("GROQ_API_KEY") or None
+    return os.getenv("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") or None
 
 
 def is_available(api_key: str | None = None) -> bool:
