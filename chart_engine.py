@@ -121,14 +121,14 @@ def _chart_pie(df: pd.DataFrame, x: str, y: str | None, title: str) -> go.Figure
     return apply_template(fig, title or (f"{x} Share" + (f" by {y}" if y else "")))
 
 
-#def _chart_scatter(df: pd.DataFrame, x: str, y: str, color: str | None, title: str) -> go.Figure:
-    #plot_df = sample_for_plot(df, max_rows=2000)
-    #if color and color in plot_df.columns and plot_df[color].nunique() <= 12:
-        #fig = px.scatter(plot_df, x=x, y=y, color=color, color_discrete_sequence=CHART_PALETTE)
-    #else:
-        #fig = px.scatter(plot_df, x=x, y=y, color_discrete_sequence=[CHART_PALETTE[0]])
-    #fig.update_traces(marker=dict(size=5, opacity=0.6))
-    #return apply_template(fig, title or f"{x} vs {y}")
+def _chart_scatter(df: pd.DataFrame, x: str, y: str, color: str | None, title: str) -> go.Figure:
+    plot_df = sample_for_plot(df, max_rows=2000)
+    if color and color in plot_df.columns and plot_df[color].nunique() <= 12:
+        fig = px.scatter(plot_df, x=x, y=y, color=color, color_discrete_sequence=CHART_PALETTE)
+    else:
+        fig = px.scatter(plot_df, x=x, y=y, color_discrete_sequence=[CHART_PALETTE[0]])
+    fig.update_traces(marker=dict(size=5, opacity=0.6))
+    return apply_template(fig, title or f"{x} vs {y}")
 
 
 def _chart_box(df: pd.DataFrame, x: str, y: str, title: str) -> go.Figure:
